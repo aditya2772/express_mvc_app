@@ -32,6 +32,33 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    
+                    <div class="table-responsive mt-4" ng-cloak ng-app="manageUsers" ng-controller="manageUsersController" ng-init="init()">
+                      <table class="table table-bordered table-striped text-center text-nowrap">
+                        <thead class="bg-dark text-white">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="user in users track by $index">
+                            <th>{{$index + 1}}</th>
+                            <td>{{user.firstName + " " + user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.contact}}</td>
+                            <td>
+                              <button class="btn btn-warning text-white" ng-click="openModal('edit', user, $index)"><i class="fa fa-edit"></i></button>
+                              <button class="btn btn-danger text-white" ng-click="deleteUser(user._id, $index)"><i class="fa fa-trash"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -55,6 +82,7 @@
     </a>
 
     <%-include('../partials/bodyScripts')%>
+    <script src="/public/ngapps/manageUsers.js"></script>
 </body>
 
 </html>
